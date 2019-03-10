@@ -1,0 +1,64 @@
+.questionContainer {
+    min-width: 320px;
+    max-width: 450px;
+    height: auto;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+}
+
+.questionPaper {
+    overflow: auto
+}
+
+.questionBoxHeader {
+    height: 50px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    text-align: left;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+
+
+.questionControls {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+
+.questionFormControl {
+    width: 100%;
+}
+
+.questionText {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.questionSeparator {
+    text-align: center;
+    background-color: lightgray;
+    height: 100%;
+    width: 1px;
+}
+
+.questionMainTitle {
+    
+    font-weight: bold;
+    font-size: 1.2em;
+    
+    
+}

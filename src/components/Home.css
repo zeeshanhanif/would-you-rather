@@ -1,0 +1,11 @@
+.homeContainer {
+    min-width: 320px;
+    max-width: 500px;
+    height: auto;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+}

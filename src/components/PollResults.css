@@ -1,0 +1,81 @@
+.pollResultsContainer {
+    min-width: 320px;
+    max-width: 500px;
+    height: auto;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+}
+
+
+.pollResultsPaper {
+    overflow: auto
+}
+
+.pollResultsBoxHeader {
+    height: 50px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    text-align: left;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+
+.pollResultsControls {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+
+.pollResultsFormControl {
+    width: 100%;
+    margin-top: 30px !important;
+}
+
+.pollResultsText {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.pollResultsSeparator {
+    text-align: center;
+    background-color: lightgray;
+    height: 100%;
+    width: 1px;
+}
+
+.pollResultsMainTitle {
+    
+    font-weight: bold;
+    font-size: 1em;
+    height: 30px;
+}
+
+.pollResultsAnswerGrid {
+    margin-top:30px !important;
+}
+
+.pollResultsVoteCount {
+    text-align: center;
+    font-weight: bold;
+}
+
+.pollResultsAnswerPaper {
+    padding: 10px;
+}
+
+.pollResultsAnswerProgress {
+    height: 15px !important;
+}

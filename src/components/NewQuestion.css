@@ -1,0 +1,51 @@
+.long-newQuestionContainer {
+    min-width: 320px;
+    max-width: 400px;
+    height: auto;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+}
+
+.long-newQuestionPaper {
+    padding: 20px;
+    overflow: auto
+}
+
+.newQuestionBoxHeader {
+    height: 50px;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+.newQuestionControls {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.newQuestionFormControl {
+    width: 100%;
+}
+
+.newQuestionText {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.newQuestionSeparator {
+    text-align: center;
+}

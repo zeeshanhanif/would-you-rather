@@ -1,0 +1,42 @@
+.long-loginContainer {
+    min-width: 320px;
+    max-width: 400px;
+    height: auto;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.long-paper {
+    padding: 20px;
+    overflow: auto
+}
+
+.loginBoxHeader {
+    height: 50px;
+    background-color: lightgray;
+}
+
+.loginBoxTitle {
+    font-weight: bold;
+    text-align: center;
+}
+
+.loginBoxMessage {
+    text-align: center;
+}
+
+.loginControls {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.formControl {
+    width: calc(100% - 10px);
+    margin: 10px 0px !important;
+}
