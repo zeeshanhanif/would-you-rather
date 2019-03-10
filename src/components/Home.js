@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Radio from '@material-ui/core/Radio';
 import TabContainer from './TabContainer';
 import Grid from '@material-ui/core/Grid';
-import avatarImg from '../assets/avatar1.png';
 
 import './Home.css';
 

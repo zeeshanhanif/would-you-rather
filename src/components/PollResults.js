@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Grid from '@material-ui/core/Grid';
 import avatarImg from '../assets/avatar1.png';
@@ -60,7 +56,7 @@ class PollResults extends Component {
                                         </Grid>
                                         <Grid item >
                                             <LinearProgress variant="determinate" value={(33.33)} className="pollResultsAnswerProgress"/>
-                                            
+
                                         </Grid>
                                         <Grid item className="pollResultsVoteCount">
                                             1 out of 3 votes
