@@ -11,3 +11,7 @@ export function formatQuestion (question, author, authedUser) {
       optionTwo
     }
   }
+
+export function calculateUserScore(user){
+    return Object.keys(user.answers).length + user.questions.length;
+}
