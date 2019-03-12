@@ -93,7 +93,7 @@ class Question extends Component {
                                     <Button variant="contained" 
                                             color="inherit" className="questionFormControl" 
                                             onClick={this.handleSubmit}
-                                            disabled={this.state.value==''}
+                                            disabled={this.state.value===''}
                                             >
                                         Submit
                                     </Button>
