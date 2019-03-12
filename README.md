@@ -6,6 +6,7 @@ This project is requirement of Udacity's React &amp; Redux course, React nan   p
 Run following commands in project home folder
 
 npm install
+
 npm start
 
 ## Deployed URL
