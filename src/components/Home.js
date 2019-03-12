@@ -32,8 +32,8 @@ class Home extends Component {
                             </Tabs>    
                         </Grid>
                         <Grid item xs={12}>
-                            {value === 0 && <TabContainer>Item One</TabContainer>}
-                            {value === 1 && <TabContainer>Item Two</TabContainer>}   
+                            {value === 0 && <TabContainer answered={false}></TabContainer>}
+                            {value === 1 && <TabContainer answered={true}></TabContainer>}   
                         </Grid>
                     </Grid>
 

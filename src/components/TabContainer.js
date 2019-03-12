@@ -1,17 +1,30 @@
 import React, { Component } from 'react';
 import PollItem from './PollItem';
+import { connect } from "react-redux";
 
 class TabContainer extends Component {
   render() {
     return (
       <div>
-        <PollItem></PollItem>
-        <PollItem></PollItem>
-        <PollItem></PollItem>
-        <PollItem></PollItem>
+        {
+            this.props.questionIds.map((id) => (
+                <PollItem key={id} id={id}></PollItem>
+            ))
+        }
       </div>
     );
   }
 }
 
-export default TabContainer;
+function mapStateToProps({users, questions, authedUser}, {answered}) {
+    console.log("in mapt to start tab container ",authedUser);
+    return {
+        questionIds: Object.keys(questions)
+            .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+            .filter((a)=> {
+                return authedUser && (answered? users[authedUser].answers[a] : !users[authedUser].answers[a]);
+            })
+    }
+}
+
+export default connect(mapStateToProps,null)(TabContainer);
