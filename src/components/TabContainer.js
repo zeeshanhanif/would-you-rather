@@ -17,7 +17,6 @@ class TabContainer extends Component {
 }
 
 function mapStateToProps({users, questions, authedUser}, {answered}) {
-    console.log("in mapt to start tab container ",authedUser);
     return {
         questionIds: Object.keys(questions)
             .sort((a,b) => questions[b].timestamp - questions[a].timestamp)

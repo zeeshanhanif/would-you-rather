@@ -5,7 +5,6 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
-import { Link } from 'react-router-dom'
 import { formatQuestion } from "../utils/helper";
 import { connect } from "react-redux";
 import { handleAddAnswer } from "../store/actions/questions";
@@ -37,6 +36,10 @@ class Question extends Component {
 
     render() {
         const { question, authedUser} = this.props;
+        
+        if(!authedUser){
+            return <Redirect to="/login" />
+        }
 
         if(!question) {
             return null;
@@ -45,6 +48,8 @@ class Question extends Component {
         if(this.state.toPollResult){
             return <Redirect to={`/pollResult/${question.id}`} />
         }
+
+        
 
 
         return (
@@ -85,10 +90,13 @@ class Question extends Component {
                                     </div>
                                 </Grid>
                                 <Grid item >
-                                    {/*
-                                    component={Link} to="/pollresult/sdf"
-                                    */}
-                                    <Button variant="contained" color="inherit" className="questionFormControl" onClick={this.handleSubmit} >Submit</Button>
+                                    <Button variant="contained" 
+                                            color="inherit" className="questionFormControl" 
+                                            onClick={this.handleSubmit}
+                                            disabled={this.state.value==''}
+                                            >
+                                        Submit
+                                    </Button>
                                 </Grid>
                                 
                                 

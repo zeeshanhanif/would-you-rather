@@ -40,3 +40,8 @@
     width: calc(100% - 10px);
     margin: 10px 0px !important;
 }
+
+.loginBoxImage {
+    width: 30px;
+    height: 30px;
+}

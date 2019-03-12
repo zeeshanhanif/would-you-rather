@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Grid from '@material-ui/core/Grid';
+import { Redirect } from "react-router-dom";
 import { formatQuestion } from "../utils/helper";
 import { connect } from "react-redux";
 
@@ -15,6 +16,10 @@ class PollResults extends Component {
     render() {
 
     const { question, authedUser} = this.props;
+        
+    if(!authedUser){
+        return <Redirect to="/login" />
+    }
 
     if(!question) {
         return null;
@@ -46,6 +51,14 @@ class PollResults extends Component {
                             </Grid>
                             <Grid item className="pollResultsAnswerGrid">
                                 <Paper className="pollResultsAnswerPaper">
+                                    {
+                                        question.optionOne.votes.includes(authedUser)?
+                                        (
+                                            <div className="pollResultsUserVoteDiv">
+                                                Your Vote
+                                            </div>
+                                        ):null
+                                    }
                                     <Grid container spacing={16} direction="column">
                                         <Grid item >
                                             Would you rather {question.optionOne.text}
@@ -61,6 +74,14 @@ class PollResults extends Component {
                             </Grid>
                             <Grid item className="pollResultsAnswerGrid">
                                 <Paper className="pollResultsAnswerPaper">
+                                    {
+                                        question.optionTwo.votes.includes(authedUser)?
+                                        (
+                                            <div className="pollResultsUserVoteDiv">
+                                                Your Vote
+                                            </div>
+                                        ):null
+                                    }
                                     <Grid container spacing={16} direction="column">
                                         <Grid item >
                                             Would you rather {question.optionTwo.text}

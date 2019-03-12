@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom'
 import { formatQuestion } from "../utils/helper";
-import avatarImg from '../assets/avatar1.png';
 import { connect } from "react-redux";
 
 import './PollItem.css';

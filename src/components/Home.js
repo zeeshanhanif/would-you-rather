@@ -5,6 +5,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabContainer from './TabContainer';
 import Grid from '@material-ui/core/Grid';
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+
 
 import './Home.css';
 
@@ -21,6 +24,13 @@ class Home extends Component {
 
     render() {
         const { value } = this.state;
+        const { authedUser} = this.props;
+
+        if(!authedUser){
+            return <Redirect to="/login" />
+        }
+
+
         return (
             <div className="homeContainer">
                 <Paper >
@@ -44,4 +54,10 @@ class Home extends Component {
     }
 }
 
-export default Home;
+function mapStateToProps({authedUser}) {
+    return {
+        authedUser
+    }
+}
+
+export default connect(mapStateToProps)(Home);

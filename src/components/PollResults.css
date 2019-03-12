@@ -79,3 +79,14 @@
 .pollResultsAnswerProgress {
     height: 15px !important;
 }
+
+.pollResultsUserVoteDiv {
+    background-color: #f50057;
+    width: 50px;
+    border-radius: 50%;
+    text-align: center;
+    margin-top: -31px;
+    margin-left: 260px;
+    position: absolute;
+    height: 50px;
+}

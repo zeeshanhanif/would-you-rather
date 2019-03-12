@@ -62,7 +62,9 @@ class ScoreCard extends Component {
                                         </Grid>
                                         <Grid item alignItems="center" justify="center" container>
                                         <Badge color="secondary" className="scoreCardBadge"
-                                                badgeContent={calculateUserScore(user)} />
+                                                badgeContent={calculateUserScore(user)} >
+                                            <span></span>
+                                        </Badge>
                                         </Grid>
                                     </Grid>
                                 </Paper>

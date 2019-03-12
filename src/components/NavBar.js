@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './NavBar.css';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -9,52 +9,77 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom'
 import LoadingBar from "react-redux-loading";
-import avatarImg from '../assets/avatar1.png';
+import { connect } from "react-redux";
+import { setAuthedUser } from "../store/actions/authedUser";
 import './NavBar.css';
 
 const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  loggedInUser: {
-    marginRight: 12,
-  }
+    root: {
+        flexGrow: 1,
+    },
+    grow: {
+        flexGrow: 1,
+    },
+    menuButton: {
+        marginLeft: -12,
+        marginRight: 20,
+    },
+    loggedInUser: {
+        marginRight: 12,
+    }
 };
 
 class NavBar extends Component {
 
-  static propTypes = {
-    classes: PropTypes.object.isRequired
-  }
-  render() {
-    const { classes } = this.props;
-    return (
-      <header>
-        <AppBar position="static" >
-        <Toolbar>  
-          <div className={classes.grow}>
-            <Button color="inherit"  className="navLinkButton" component={Link} to="/">Home</Button>
-            <Button color="inherit" className="navLinkButton" component={Link} to="/newquestion">New Question</Button>
-            <Button color="inherit" className="navLinkButton" component={Link} to="/leaderboard">Leader Board</Button>
-          </div>  
-          <Typography variant="h6" color="inherit" className={classes.loggedInUser}>
-            Hello User
-          </Typography>
-          <Avatar alt="Remy Sharp" src={avatarImg} className={classes.avatar} />      
-          <Button color="inherit" className="navLinkButton" component={Link} to="/login">Login</Button>
+    static propTypes = {
+        classes: PropTypes.object.isRequired
+    }
 
-        </Toolbar>
-      </AppBar>
-      <LoadingBar />
-      </header>
-    );
-  }
+    state = {
+        userId: '',
+        toLogin: false,
+    };
+
+    handleLogout = e => {
+        e.preventDefault();
+        this.props.dispatch(setAuthedUser(null));
+        // add in store 
+    }
+    render() {
+        const { classes, loggedInUser  } = this.props;
+        return (
+            <header>
+                <AppBar position="static" >
+                    <Toolbar>  
+                        <div className={classes.grow}>
+                            <Button color="inherit"  className="navLinkButton" component={Link} to="/home">Home</Button>
+                            <Button color="inherit" className="navLinkButton" component={Link} to="/newquestion">New Question</Button>
+                            <Button color="inherit" className="navLinkButton" component={Link} to="/leaderboard">Leader Board</Button>
+                        </div>  
+                        {
+                            loggedInUser? (
+                                <Fragment>
+                                    <Typography variant="h6" color="inherit" className={classes.loggedInUser}>
+                                        Hello {loggedInUser.name}
+                                    </Typography>
+                                    <Avatar alt="Remy Sharp" src={loggedInUser?loggedInUser.avatarURL:""} className={classes.avatar} />      
+                                    <Button color="inherit" className="navLinkButton" onClick={this.handleLogout}>Logout</Button>    
+                                </Fragment> ) : 
+                                <Button color="inherit" className="navLinkButton" component={Link} to="/login">Login</Button>
+                        }
+                      </Toolbar>
+                  </AppBar>
+                <LoadingBar />
+            </header>
+        );
+    }
 }
-export default withStyles(styles)(NavBar);
+
+function mapStateToProps({authedUser, questions, users}) {
+    return {
+        authedUser,
+        loggedInUser: users[authedUser]
+    }
+}
+
+export default connect(mapStateToProps)(withStyles(styles)(NavBar));

@@ -13,27 +13,27 @@ import history from "./History";;
 
 class Routers extends Component {
 
-  render() {
-    return (
-      <Router history={history}>
-        <div>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/newquestion" component={NewQuestion} />
-            <Route exact path="/leaderboard" component={LeaderBoard} />
-            <Route exact path="/pollresult/:id" component={PollResults} />
-            <Route exact path="/question/:id" component={Question} />
-            <Route exact path="/scorecard" component={ScoreCard} />
-            <Route path="*" component={NotFound} />
-          </Switch>
-        </div>
+    render() {
+        return (
+            <Router history={history}>
+                <div>
+                    <Navbar />
+                    <Switch>
+                        <Route exact path="/" component={Login} />
+                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/home" component={Home} />
+                        <Route exact path="/newquestion" component={NewQuestion} />
+                        <Route exact path="/leaderboard" component={LeaderBoard} />
+                        <Route exact path="/pollresult/:id" component={PollResults} />
+                        <Route exact path="/question/:id" component={Question} />
+                        <Route exact path="/scorecard" component={ScoreCard} />
+                        <Route path="*" component={NotFound} />
+                    </Switch>
+                </div>
 
-      </Router>
-    );
-  }
+            </Router>
+        );
+    }
 }
 
 export default Routers;
