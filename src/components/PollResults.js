@@ -12,7 +12,7 @@ class PollResults extends Component {
     calculateOptionResult(votes, question){
         return (votes / (question.optionOne.votes.length + question.optionTwo.votes.length))*100;
     }
-  render() {
+    render() {
 
     const { question, authedUser} = this.props;
 
@@ -54,7 +54,7 @@ class PollResults extends Component {
                                             <LinearProgress variant="determinate" value={(this.calculateOptionResult(question.optionOne.votes.length,question))} className="pollResultsAnswerProgress" />
                                         </Grid>
                                         <Grid item className="pollResultsVoteCount" >
-                                            2 out of 3 votes
+                                            {question.optionOne.votes.length} out of { question.optionOne.votes.length + question.optionTwo.votes.length} votes
                                         </Grid>
                                     </Grid>
                                 </Paper>
@@ -70,7 +70,7 @@ class PollResults extends Component {
 
                                         </Grid>
                                         <Grid item className="pollResultsVoteCount">
-                                            1 out of 3 votes
+                                        {question.optionTwo.votes.length} out of { question.optionOne.votes.length + question.optionTwo.votes.length} votes
                                         </Grid>
                                     </Grid>
                                 </Paper>
