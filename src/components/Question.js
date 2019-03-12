@@ -8,6 +8,9 @@ import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom'
 import { formatQuestion } from "../utils/helper";
 import { connect } from "react-redux";
+import { handleAddAnswer } from "../store/actions/questions";
+import { Redirect } from "react-router-dom";
+
 
 import './Question.css';
 
@@ -15,6 +18,7 @@ class Question extends Component {
 
     state = {
         value: '',
+        toPollResult: false,
     };
 
     handleChange = event => {
@@ -24,10 +28,10 @@ class Question extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const { value } = this.state;
-
-        console.log("valueeeeeeeeeeeeeee ",value);
+        this.props.dispatch(handleAddAnswer(this.props.qid, value));
         this.setState({
-            value:''
+            value:'',
+            toPollResult: true,
         })
     }
 
@@ -36,6 +40,10 @@ class Question extends Component {
 
         if(!question) {
             return null;
+        }
+
+        if(this.state.toPollResult){
+            return <Redirect to={`/pollResult/${question.id}`} />
         }
 
 
@@ -68,7 +76,6 @@ class Question extends Component {
                                     <RadioGroup
                                         aria-label="Gender"
                                         name="gender1"
-                                        //className={classes.group}
                                         value={this.state.value}
                                         onChange={this.handleChange}
                                     >
@@ -99,6 +106,7 @@ function mapStateToProps({authedUser, questions, users}, props) {
     const { id } = props.match.params;
     return {
         authedUser,
+        qid: id,
         question: questions[id]? formatQuestion(questions[id],users[questions[id].author],authedUser): null
     }
 }
