@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Badge from '@material-ui/core/Badge';
 import { calculateUserScore } from "../utils/helper";
 import { connect } from "react-redux";
 
@@ -15,15 +16,21 @@ class ScoreCard extends Component {
             <div>
                 <Paper className="scoreCardContainer">
                     <Grid container spacing={16}>
-                        <Grid item xs={3}>
+                        <Grid item xs={3} alignItems="center" justify="center" container>
                             <div>
                                 <img className="scoreCardImg" alt="complex" src={user.avatarURL} />
                             </div>
                         </Grid>
+                        <Grid item xs={1} className="scoreCardSeparatorGrid">
+                            <div className="scoreCardSeparator">
+                            </div>
+                        </Grid>
                         <Grid item xs={7} sm container>
                             <Grid item xs container direction="column" spacing={16}>
-                                <Grid item xs>
-                                    {user.name}
+                                <Grid item xs >
+                                    <div className="scoreCardNameBox">
+                                        {user.name}
+                                    </div>
                                 </Grid>
                                 <Grid item xs container>
                                     <Grid xs={10} item >
@@ -43,14 +50,22 @@ class ScoreCard extends Component {
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid xs={2} item container direction="column">
-                                
-                                <Grid item>
-                                    Score
-                                </Grid>
-                                <Grid item>
-                                    {calculateUserScore(user)}
-                                </Grid>
+                        <Grid item xs={1} className="scoreCardSeparatorGrid">
+                            <div className="scoreCardSeparator">
+                            </div>
+                        </Grid>
+                        <Grid xs={2} item container direction="column" alignItems="center" justify="center">
+                                <Paper className="scoreCardScorePaper">
+                                    <Grid item container direction="column" className="scoreCardScoreGrid">
+                                        <Grid item className="scoreCardScoreBoxHeader">
+                                            Score
+                                        </Grid>
+                                        <Grid item alignItems="center" justify="center" container>
+                                        <Badge color="secondary" className="scoreCardBadge"
+                                                badgeContent={calculateUserScore(user)} />
+                                        </Grid>
+                                    </Grid>
+                                </Paper>
                             </Grid>
                     </Grid>
                 </Paper>

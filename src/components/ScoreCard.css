@@ -12,3 +12,47 @@
     width: 100px;
     height: 100px;
 }
+
+
+.scoreCardSeparator {
+    text-align: center;
+    background-color: lightgray;
+    height: 100%;
+    width: 1px;
+}
+
+.scoreCardSeparatorGrid {
+    max-width: 1px !important;
+}
+
+.scoreCardScorePaper {
+    margin-left: -10px;
+    width: calc(100% - 10px);
+    height: calc(100% - 20px);
+}
+
+.scoreCardScoreGrid {
+    height: 100%;
+}
+
+.scoreCardScoreBoxHeader {
+    height: 30px;
+    font-weight: bold;
+    
+    text-align: center;
+    border-bottom-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.scoreCardBadge {
+    margin-top: 25px;
+}
+
+
+.scoreCardNameBox {
+    font-weight: bold;
+}
