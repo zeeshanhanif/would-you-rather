@@ -2,61 +2,89 @@ import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { handleAddQuesiton } from "../store/actions/questions";
 
 import './NewQuestion.css';
 
 class NewQuestion extends Component {
 
     state = {
-        age: '',
-        name: '',
-        labelWidth: 0,
-      };
-  render() {
-    return (
-      <div>
-        <div className="long-newQuestionContainer">
-            <Paper className="long-newQuestionPaper">
-                <div className="newQuestionBoxHeader">
-                    Create New Quesiton
-                </div>
-                <div className="newQuestionControls">
-                    <div >
-                        Complete the quesiton:
-                    </div>
-                    <div className="newQuestionText">
-                        Would you rather...
-                    </div>
-                    <form>
-                        <TextField
-                            id="outlined-name"
-                            label="Option One"
-                            className="newQuestionFormControl"
-                            value={this.state.name}
-                            //onChange={this.handleChange('name')}
-                            margin="normal"
-                            variant="outlined"
-                            />
-                        <div className="newQuestionSeparator">
-                            OR
+        optionOne:'',
+        optionTwo:'',
+        toHome: false,
+    };
+
+    handleChange = name => event => {
+        this.setState({ [name]: event.target.value });
+    };
+
+    handleSubmit = e => {
+        e.preventDefault();
+        const {optionOne , optionTwo} = this.state;
+        console.log("option one ",optionOne);
+        console.log("option two ",optionTwo);
+        this.props.dispatch(handleAddQuesiton(optionOne, optionTwo));
+        // add in store 
+        this.setState({
+            optionOne:'',
+            optionTwo:'',
+            toHome: true
+        });
+    }
+
+    render() {
+
+        const { toHome} = this.state;
+        if(toHome){
+            return <Redirect to={"/"} />
+        }
+
+        return (
+            <div>
+                <div className="long-newQuestionContainer">
+                    <Paper className="long-newQuestionPaper">
+                        <div className="newQuestionBoxHeader">
+                            Create New Quesiton
                         </div>
-                        <TextField
-                            id="outlined-name"
-                            label="Option Two"
-                            className="newQuestionFormControl"
-                            value={this.state.name}
-                            //onChange={this.handleChange('name')}
-                            margin="normal"
-                            variant="outlined"
-                            />
-                    </form>
+                        <div className="newQuestionControls">
+                            <div >
+                                Complete the quesiton:
+                            </div>
+                            <div className="newQuestionText">
+                                Would you rather...
+                            </div>
+                            <form>
+                                <TextField
+                                    id="outlined-name"
+                                    label="Option One"
+                                    className="newQuestionFormControl"
+                                    value={this.state.optionOne}
+                                    onChange={this.handleChange('optionOne')}
+                                    margin="normal"
+                                    variant="outlined"
+                                    />
+                                <div className="newQuestionSeparator">
+                                    OR
+                                </div>
+                                <TextField
+                                    id="outlined-name"
+                                    label="Option Two"
+                                    className="newQuestionFormControl"
+                                    value={this.state.optionTwo}
+                                    onChange={this.handleChange('optionTwo')}
+                                    margin="normal"
+                                    variant="outlined"
+                                    />
+                            </form>
+                        </div>
+                        <Button variant="contained" color="inherit" className="newQuestionFormControl" onClick={this.handleSubmit}>Submit</Button>
+                    </Paper>
                 </div>
-                <Button variant="contained" color="inherit" className="newQuestionFormControl">Submit</Button>
-            </Paper>
-        </div>
-      </div>
-    );
-  }
+            </div>
+        );
+    }
 }
 
-export default NewQuestion;
+export default connect()(NewQuestion);

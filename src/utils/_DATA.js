@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
+    avatarURL: "https://www.drain1.ca/wp-content/uploads/2018/01/flat-faces-icons-circle-3.png",
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',

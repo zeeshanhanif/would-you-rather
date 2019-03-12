@@ -24,8 +24,8 @@ class Routers extends Component {
             <Route exact path="/home" component={Home} />
             <Route exact path="/newquestion" component={NewQuestion} />
             <Route exact path="/leaderboard" component={LeaderBoard} />
-            <Route exact path="/pollresult" component={PollResults} />
-            <Route exact path="/question" component={Question} />
+            <Route exact path="/pollresult/:id" component={PollResults} />
+            <Route exact path="/question/:id" component={Question} />
             <Route exact path="/scorecard" component={ScoreCard} />
             <Route path="*" component={NotFound} />
           </Switch>

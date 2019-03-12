@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom'
+import LoadingBar from "react-redux-loading";
 import avatarImg from '../assets/avatar1.png';
 import './NavBar.css';
 
@@ -51,6 +52,7 @@ class NavBar extends Component {
 
         </Toolbar>
       </AppBar>
+      <LoadingBar />
       </header>
     );
   }
